@@ -3,3 +3,6 @@ node_modules/
 
 #ignore env files
 .env
+
+#ignore dist
+/front-end/dist
