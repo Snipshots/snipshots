@@ -1,2 +1,2 @@
 # snipshots
-Save your cooode
+Save your cooode!
