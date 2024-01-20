@@ -4,7 +4,7 @@ const connectDB = require('./config/database');
 const express = require('express');
 const app = express();
 const PORT = 8080;
-const snipRouter = require('./routes/index');
+const router = require('./routes/index');
 // const app = express();
 
 connectDB();
@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, "../somePath")));
 
 // define the route hanlders
-app.use('/snips', snipRouter);
+app.use('/', router);
 
 
 
