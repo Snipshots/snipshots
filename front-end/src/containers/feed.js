@@ -1,16 +1,31 @@
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
+import Overview from '../components/overview';
+import Post from '../components/post';
+import Snippet from '../components/snippet';
+import { useSelector, useDispatch } from 'react-redux';
+import { navigate } from '../reducers/feedSlice';
 
-//const Feed = ({dispatch}) => {}
+const Feed = () => {
 
-class Feed extends Component {
-    render () {
-        return (
-          <div id='overview'>
-            <h1> Hello! </h1>
-            <button> Create New Snip </button>
-          </div>
-        );
-    }
+  const dispatch = useDispatch();
+  const dispatchNav = (component) =>{
+    dispatch(navigate(component));
+  }
+
+  const currState = useSelector((state) => state.feed.currComponent);
+  console.log(currState);
+
+  const render = () => {
+    if(currState === 'overview') return <Overview dispatchNav={dispatchNav}/>
+    else if (currState === 'post') return <Post dispatchNav={dispatchNav} />
+    else if (currState === 'snippet') return <Snippet dispatchNav={dispatchNav}/>
 }
 
-export default Feed; 
+  return (
+    <div id='overview'>
+      {render()}
+    </div>
+  );
+};
+
+export default Feed;

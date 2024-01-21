@@ -1,32 +1,33 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports ={
+module.exports = {
   mode: process.env.NODE_ENV,
-  entry:{
-    bundle: path.resolve(__dirname, "src", "index.js")
+  entry: {
+    bundle: path.resolve(__dirname, 'src', 'index.js'),
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: '[name].js', // the brackets allow it to be named anything, points to entry.bundle
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[file].js', // the brackets allow it to be named anything, points to entry.bundle
     clean: true, // only compile bundle.js once
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Webpack App",
-      filename: "index.html", //creates mirror files, this one is 1 line
-      template: "src/template.html",
+      title: 'Webpack App',
+      filename: 'index.html', //creates mirror files, this one is 1 line
+      template: 'src/template.html',
     }),
   ],
-  devServer:{
+  devServer: {
     static: {
-      directory: path.resolve(__dirname, "dist"),
+      publicPath: '/',
+      directory: path.resolve(__dirname, 'dist'),
     },
     port: 3000,
     open: true,
     hot: true,
     compress: true,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -34,20 +35,20 @@ module.exports ={
         test: /\.scss$/,
         use: [
           // // Creates `style` nodes from JS strings
-          "style-loader",
+          'style-loader',
           // // Translates CSS into CommonJS
-          "css-loader",
+          'css-loader',
           // Compiles Sass to CSS
-          "sass-loader",
+          'sass-loader',
         ],
       },
       {
         test: /.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
+            presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
       },
@@ -55,9 +56,8 @@ module.exports ={
         //allows images to be loaded
         test: /\.(png|svg|jpg|jpeg|gif)/,
         exclude: /node_modules/,
-        type: "asset/resource",
+        type: 'asset/resource',
       },
     ],
   },
 };
-    
