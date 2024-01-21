@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const Post = () => {
+const Post = ({dispatchNav, toOverview}) => {
 
   //database accepts code as an array, so passed in value must be turned into an array
   const splitString = string => string.split(',');
@@ -27,11 +27,17 @@ const Post = () => {
       console.log(error)
     })
   }
+
+  
   
 
   return (
     <div id='post'>
+      {/* <div className='post-header'> */}
+        <button onClick={toOverview} className='ex'>X</button>
+      {/* </div> */}
       <h1>Create a new Snippet!</h1>
+
       <div className='input-box'>
         <label>Title:</label>
         <input type='text' placeholder='title' id='title'></input>
