@@ -28,6 +28,14 @@ module.exports = {
     hot: true,
     compress: true,
     historyApiFallback: true,
+    proxy: {
+      "/": {
+        target: "http://localhost:8080", // your back-end server address
+        secure: false, // for self-signed certificates, you may need to set this to false
+        changeOrigin: true, // necessary for the correct routing of requests
+      },
+  },
+  
   },
   module: {
     rules: [
