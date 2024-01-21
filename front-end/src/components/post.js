@@ -30,15 +30,21 @@ const Post = () => {
   
 
   return (
-    <div id='posts'>
+    <div id='post'>
       <h1>Create a new Snippet!</h1>
       <div className='input-box'>
-      <label> Post </label>
-        <input  type='text' placeholder='title' id='title'></input>
-        <input  type='text' placeholder='tags' id='tags'></input>
-        <input  type='text' placeholder='code' id='code'></input>
-        <input  type='text' placeholder='description' id='description'></input>
-        <button type='submit' onClick={postToDatabase}>Post Something</button>
+        <label>Title:</label>
+        <input type='text' placeholder='title' id='title'></input>
+        {/* <input type='text' placeholder='code' id='code'></input> */}
+        <textarea placeholder='code' id='code'></textarea>
+        <label>Tags:</label>
+        <input type='text' placeholder='tags' id='tags'></input>
+        <label>Description:</label>
+        {/* <input type='text' placeholder='description' id='description'></input> */}
+        <textarea placeholder='description' id='description'></textarea>
+        <button id='postcode' type='submit' onClick={postToDatabase}>
+          Post Something
+        </button>
       </div>
     </div>
   );

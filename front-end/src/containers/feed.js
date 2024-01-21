@@ -22,7 +22,7 @@ const Feed = () => {
 }
 
   return (
-    <div id='overview'>
+    <div id='feed'>
       {render()}
     </div>
   );

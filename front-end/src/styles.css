@@ -1,0 +1,128 @@
+body {
+  background-color: #222222;
+  padding: 0;
+  margin: 0;
+  color: lightgray;
+  font-family: 'Arial', sans-serif;
+}
+
+#root,
+.App {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+#header {
+  top: 0px;
+  border-bottom: 5px solid slategray;
+}
+
+#footer {
+  border-top: 5px solid slategray;
+  width: 100%;
+  background-color: darkgray;
+  bottom: 0px;
+}
+
+#header,
+#footer {
+  position: fixed;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: darkgray;
+  text-align: center;
+}
+
+#header h1,
+#footer h1 {
+  color: #222222;
+}
+
+#feed {
+  margin-top: 120px;
+  padding-bottom: 40px;
+  width: 100%;
+  text-align: center;
+}
+
+#overview,
+#post,
+#snippet,
+.snippetCard {
+  margin: 0 auto;
+  width: 50%;
+  border: 2px solid slategray;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px; /* Added rounded border */
+}
+
+#post {
+  padding: 20px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#post h1,
+#snippetCard h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: slategray; /* Brighter font color */
+}
+
+#post label,
+#post input[type='text'],
+#post textarea,
+#snippetCard p {
+  display: block;
+  margin-bottom: 8px;
+  color: slategray; /* Brighter font color */
+}
+
+#post input[type='text'],
+#post textarea,
+#snippetCard {
+  width: 80%;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: rgba(35, 35, 35);
+  border: 0px solid slategray; /* Added subtle rounded border */
+  border-radius: 5px; /* Added rounded corners */
+  color: slategray; /* Brighter font color */
+}
+
+#post textarea,
+#snippetCard p {
+  height: 150px;
+}
+
+#post div,
+#snippetCard {
+  border: 3px solid rgba(35, 35, 35);
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: rgba(55, 55, 55);
+  border-radius: 8px;
+}
+
+#post button,
+#overview button,
+.snippetCard {
+  margin-top: 20px;
+  padding: 10px;
+  color: slategray;
+  background: rgba(35, 35, 35);
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+.snippetCard:hover {
+  background-color: slategray;
+  color: lightgray;
+}
