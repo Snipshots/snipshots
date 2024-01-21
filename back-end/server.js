@@ -16,14 +16,11 @@ app.use(express.urlencoded({ extended: true }));
 //     console.log(`Express Server running on http://localhost:${PORT}`);
 // })
 
-
 // handle requests for static file
 app.use(express.static(path.resolve(__dirname, "../somePath")));
 
 // define the route hanlders
 app.use('/', router);
-
-
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) =>
