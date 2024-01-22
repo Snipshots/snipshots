@@ -33,10 +33,10 @@ Here is the heirarchal structure
       |-- post
       |-- snippet
 
-Most of our frontend uses @reduxtoolkitjs. Here are some documenentation that we used https://redux-toolkit.js.org/introduction/getting-started      
+Most of our frontend uses React and @reduxtoolkitjs. Here is some of the documenentation that we used https://redux-toolkit.js.org/introduction/getting-started.
 
 ## About the Backend
-1. We used MongoDB atlas for our database and our URI was stored in an env file. Because of this, successors will not have access to the original Database. 
+1. We used MongoDB Atlas for our database and our URI was stored in an env file. Because of this, successors will not have access to the original Database. 
 2. You will have to create a new MongoDB Atlas for yourselves and create a .env file inside the backend folder. Assign a variable MONGO_URI in this .env file to your URI (taken from MONGODB). This URI should already include your username, password, and cluster
 Should look like this
 
