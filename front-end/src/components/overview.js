@@ -8,7 +8,7 @@ const Overview = ({ dispatchNav }) => {
     // Fetch all snippet cards via /all route when the component mounts
     fetch('/all')
     .then((response) => response.json())
-    .then((data) => setAllSnips(data))
+    .then((data) => setAllSnips(data.reverse()))
     .catch((error) => console.error('Error when fetching snippets:',error));
   }, [])
   function posted() {
@@ -18,13 +18,13 @@ const Overview = ({ dispatchNav }) => {
   return (
     <div id='overview'>
       <h1>Your Snippets</h1>
+      <button onClick={posted}>Post new Snippet!</button>
       { /* <SnippetCard />
       <SnippetCard />
       <SnippetCard /> */ }
       {allSnips.map((snip) => (        
         <SnippetCard key={snip._id} snippet={snip} />
-      ))}
-      <button onClick={posted}>Post Code</button>
+      ))}      
     </div>
   );
 };
