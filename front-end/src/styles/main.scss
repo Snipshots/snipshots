@@ -3,7 +3,7 @@ body {
   padding: 0;
   margin: 0;
   color: lightgray;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', 'Arial', sans-serif;
 }
 
 button{
@@ -50,11 +50,7 @@ button:hover{
   padding: 0;
   background-color: darkgray;
   text-align: center;
-}
-
-#header h1,
-#footer h1 {
-  color: #222222;
+  color: rgba(35, 35, 35);
 }
 
 #feed {
@@ -69,6 +65,7 @@ button:hover{
   flex-direction: column;
   align-items: center;
 }
+
 #overview,
 #post,
 #snippet,
@@ -77,22 +74,36 @@ button:hover{
   width: 50%;
   border: 2px solid slategray;
   margin-bottom: 30px;
-  padding: 20px;
   background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 8px; /* Added rounded border */
+  border-radius: 8px;
 }
 
+#overview, #post, #snippet {
+  margin-bottom: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#snippet h1 {
+  display: inline-block;  
+  margin: 0 auto;
+  background-color: rgba(35, 35, 35);
+  border: 5px solid rgba(35, 35, 35);
+  border-radius: 5px;
+  
+}
 #post {
   padding: 20px;
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-#post h1,
+#overview h1, #post h1, #snippet h1,
 #snippetCard h2 {
   font-size: 24px;
   margin-bottom: 20px;
-  color: slategray; /* Brighter font color */
+  color: slategray;
+  
 }
 
 #post label,
@@ -101,7 +112,7 @@ button:hover{
 #snippetCard p {
   display: block;
   margin-bottom: 8px;
-  color: slategray; /* Brighter font color */
+  color: slategray;
 }
 
 #post input[type='text'],
@@ -111,9 +122,9 @@ button:hover{
   padding: 10px;
   box-sizing: border-box;
   background-color: rgba(35, 35, 35);
-  border: 0px solid slategray; /* Added subtle rounded border */
-  border-radius: 5px; /* Added rounded corners */
-  color: slategray; /* Brighter font color */
+  border: 0px solid slategray;
+  border-radius: 5px;
+  color: slategray;
 }
 
 #post textarea,
@@ -150,10 +161,8 @@ button:hover{
   z-index: 3;
 }
 
-
-
-
 .snippetCard:hover {
   background-color: slategray;
   color: lightgray;
 }
+

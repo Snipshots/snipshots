@@ -12,7 +12,8 @@ class App extends Component {
         </div>
         <Feed />
         <div id='footer'>
-          <h1> Footer </h1>
+          <h3>Snipshots</h3>
+          <p>By Dan, Joe, Julien, Kris and Paul</p>
         </div>
       </div>
     );
