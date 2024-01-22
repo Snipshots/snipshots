@@ -47,8 +47,8 @@ controller.createSnip = async (req, res, next) => {
     return next();
     } catch (err) {
         return next({
-            log: `controller.postSnip error: ${err}`,
-            message: { err: 'Error occured in Controllor PostSnip middleware.'},
+            log: `controller.createSnip error: ${err}`,
+            message: { err: 'Error occured in Controllor createSnip middleware.'},
             status: 500,
         });
     };
@@ -59,7 +59,7 @@ controller.createSnip = async (req, res, next) => {
 controller.getOne = async (req, res, next) => {
     try{
         const { title } = req.body;
-        const oneSnip = await Snippet.find({title});
+        const oneSnip = await Snippet.findOne({title});
         if(oneSnip === null){
             const error = {
                 log: `Error in getOne middleware: ${error}`,
@@ -86,13 +86,15 @@ controller.getTag = async (req, res, next) => {
         const {tags} = req.body
         const allSnips = await Snippet.find({});
         console.log("All Snips:", allSnips);
-        res.locals.taggedSnips = byTag(tags, allSnips);
+        snipsByTag = byTag(tags, allSnips);
+        //if(snipsByTag.length === 0)
+        res.locals.taggedSnips = snipsByTag; 
         return next();
 
      } catch (err){
         return next({
             log: `controller getTag error: ${err}`,
-            message: { err: 'Error occured in Controllor getAll middleware.'},
+            message: { err: 'Error occured in Controllor getTag middleware.'},
             status: 500,
         });
      };
