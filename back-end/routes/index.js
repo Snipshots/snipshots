@@ -3,13 +3,13 @@ const express = require('express');
 const snipsController = require('../controllers/controllers');
 const router = express.Router();
 
-//router to GET all snippet objects that include inputted TAGS sent on request body
+//router to GET all snippet cards that include inputted TAGS sent on request body
 router.get('/all', snipsController.getAll, (req, res) =>{
     res.status(200).json(res.locals.allSnips);
 });   
 
 //router to RETURN one snippet based on its TITLE
-router.get('/one', snipsController.getOne, (req, res) =>{
+router.post('/one', snipsController.getOne, (req, res) =>{
     res.status(200).json(res.locals.oneSnip);
 });   
 

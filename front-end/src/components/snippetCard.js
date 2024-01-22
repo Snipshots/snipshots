@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 
-//
-const SnippetCard = ({ title, tags }) => {
-  // overwriting for pseudo data to generate an example!
-  title = 'How to make a fetch request';
-  tags = ['ajax', 'fetch', 'async'];
+const SnippetCard = ({ snippet, displaySnippet }) => {
+  const { title, tags } = snippet;
 
-  const handleClick = () => {
-    console.log('card clicked!');
-  };
   return (
-    <div className='snippetCard' onClick={handleClick}>
+    <div className='snippetCard' onClick={displaySnippet}>
       <h2>{title}</h2>
       <p>Tags: {tags.join(', ')}</p>
     </div>
