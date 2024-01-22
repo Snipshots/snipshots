@@ -34,6 +34,8 @@ Here is the heirarchal structure
       |-- snippet
 
 Most of our frontend uses React and @reduxtoolkitjs. Here is some of the documenentation that we used https://redux-toolkit.js.org/introduction/getting-started.
+1. Post.js uses redux 
+2. overview + snippetCard uses react. It might be best to translate these components to redux. 
 
 ## About the Backend
 1. We used MongoDB Atlas for our database and our URI was stored in an env file. Because of this, successors will not have access to the original Database. 
@@ -43,5 +45,12 @@ Should look like this
 MONGO_URI=mongodb+srv://<username>:<password>@<cluster-name>.7ux079m.mongodb.net/?retryWrites=true&w=majority
 
 **Notice how variables in .env files do not need declarations!**
+
+## Stretch Goals
+1. Turning everything into redux
+2. Copy and Paste functionality
+3. Create Users
+4. Implementing OAuth
+5. More tests in TDD
 
 ### Welcome to Snipshots!

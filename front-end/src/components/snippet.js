@@ -11,6 +11,7 @@ const Snippet = ({toOverview}) => {
   const [selectedSnippet, setSelectedSnippet] = useState(null);
 
   useEffect(() => {
+    // post request grabbing a full snippet based on the title of the snippet card we previously clicked on
     const pullFullSnippet = async () => {
       try {
         const response = await fetch('/one', {
@@ -20,7 +21,6 @@ const Snippet = ({toOverview}) => {
             'Content-Type': 'application/json',
           },
         });
-
         if (response.ok) {
           const data = await response.json();
           setSelectedSnippet(data);
@@ -33,11 +33,13 @@ const Snippet = ({toOverview}) => {
       }
     };
 
+    // if there is a snippet (title) defined in our redux store, grab the full snippet
     if (snippet) {
       pullFullSnippet();
     }
   }, [snippet, dispatch]);
 
+  // until the full snippet has loaded, display a loading message
   if (!selectedSnippet) {
     return <div>Loading...</div>; // displays until snippet has loaded
   }

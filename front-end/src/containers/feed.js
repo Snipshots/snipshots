@@ -13,25 +13,29 @@ const Feed = () => {
     dispatch(navigate(component));
   }
 
+  // update snippet in state and navigate to snippet component
   const setSnippetAndNavigate = (snippet) => {
     dispatch(setSnippet(snippet));
     dispatch(navigate('snippet'));    
   };
 
+  // navigate back to overview
   const toOverview = () => {
-    console.log('to overview')
+    // console.log('to overview')
     dispatchNav('overview');
   }
 
+  // keeps track of what component we're currently on
   const currState = useSelector((state) => state.feed.currComponent);
 
+  // render one of our three main components based on current state (default: overview)
   const render = () => {
     if(currState === 'overview') {
-      return <Overview dispatchNav={dispatchNav} setSnippetAndNavigate={setSnippetAndNavigate} /> // Pass setSnippetAndNavigate
+      return <Overview dispatchNav={dispatchNav} setSnippetAndNavigate={setSnippetAndNavigate} /> // pass in both navigator functions to get to either the post or snippet component
     } else if (currState === 'post') {
-      return <Post dispatchNav={dispatchNav} toOverview={toOverview} />
+      return <Post dispatchNav={dispatchNav} toOverview={toOverview} /> // pass in the navigator function to navigate back to overview
     } else if (currState === 'snippet') {
-      return <Snippet dispatchNav={dispatchNav} toOverview={toOverview}  />
+      return <Snippet dispatchNav={dispatchNav} toOverview={toOverview}  /> // pass in the navigator function to navigate back to overview
     }
   }
 

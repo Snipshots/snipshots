@@ -6,11 +6,13 @@ const feedSlice = createSlice({
   name: 'feed',
   initialState: {
     currComponent: 'overview',
+    allSnips: []
   },
   reducers: {
     navigate: (state, action) => {
       state.currComponent = action.payload;
     },
+    
   },
 });
 
