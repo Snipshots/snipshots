@@ -28,7 +28,7 @@ const Overview = ({ dispatchNav, setSnippetAndNavigate }) => {
         <SnippetCard
           key={snip._id}
           snippet={snip}
-          onClick={() => handleSnippetClick(snip)}
+          displaySnippet={() => handleSnippetClick(snip)}
         />
       ))}
     </div>
