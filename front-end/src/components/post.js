@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 
-const Post = ({dispatchNav, toOverview}) => {
-
-  //database accepts code as an array, so passed in value must be turned into an array
+const Post = ({toOverview}) => {
+  // database accepts code as an array, so passed in value must be turned into an array.
+  // also added trimming and turning tags to lowercase
   const splitString = string => string.split(',').map(tag => tag.trim().toLowerCase());
-
 
   function postToDatabase() {
     const titleInput = document.querySelector('#title');
@@ -38,29 +37,19 @@ const Post = ({dispatchNav, toOverview}) => {
     })
   }
 
-  
-  
-
   return (
     <div id='post'>
-      {/* <div className='post-header'> */}
-        <button onClick={toOverview} className='ex'>X</button>
-      {/* </div> */}
+      <button onClick={toOverview} className='back'>{'←'}</button>
       <h1>Create a new Snippet!</h1>
-
       <div className='input-box'>
         <label>Title:</label>
         <input type='text' placeholder='title' id='title'></input>
-        {/* <input type='text' placeholder='code' id='code'></input> */}
         <textarea placeholder='code' id='code'></textarea>
         <label>Tags:</label>
         <input type='text' placeholder='tags' id='tags'></input>
         <label>Description:</label>
-        {/* <input type='text' placeholder='description' id='description'></input> */}
         <textarea placeholder='description' id='description'></textarea>
-        <button id='postcode' type='submit' onClick={postToDatabase}>
-          Post Something
-        </button>
+        <button id='postcode' type='submit' onClick={postToDatabase}>Submit snippet!</button>
       </div>
     </div>
   );

@@ -1,30 +1,36 @@
-import React, { useState, useEffect, Component } from 'react';
-import SnippetCard from './snippetCard';
+import React, { useState, useEffect } from 'react';
+import SnippetCard from './SnippetCard';
 
-const Overview = ({ dispatchNav }) => {
+const Overview = ({ dispatchNav, setSnippetAndNavigate }) => {
   const [allSnips, setAllSnips] = useState([]);
-  
+
   useEffect(() => {
-    // Fetch all snippet cards via /all route when the component mounts
+    // fetch all snippet cards via /all route when the component mounts
     fetch('/all')
-    .then((response) => response.json())
-    .then((data) => setAllSnips(data.reverse()))
-    .catch((error) => console.error('Error when fetching snippets:',error));
-  }, [])
-  function posted() {
+      .then((response) => response.json())
+      .then((data) => setAllSnips(data.reverse()))
+      .catch((error) => console.error('Error when fetching snippets:', error));
+  }, []);
+
+  const createSnippet = () => {
     dispatchNav('post');
-  }
+  };
+
+  const handleSnippetClick = (snippet) => {
+    setSnippetAndNavigate(snippet);
+  };
 
   return (
     <div id='overview'>
       <h1>Your Snippets</h1>
-      <button onClick={posted}>Post new Snippet!</button>
-      { /* <SnippetCard />
-      <SnippetCard />
-      <SnippetCard /> */ }
-      {allSnips.map((snip) => (        
-        <SnippetCard key={snip._id} snippet={snip} />
-      ))}      
+      <button onClick={createSnippet}>Post new Snippet!</button>
+      {allSnips.map((snip) => (
+        <SnippetCard
+          key={snip._id}
+          snippet={snip}
+          onClick={() => handleSnippetClick(snip)}
+        />
+      ))}
     </div>
   );
 };
