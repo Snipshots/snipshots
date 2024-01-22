@@ -62,7 +62,7 @@ controller.getOne = async (req, res, next) => {
         const oneSnip = await Snippet.findOne({title});
         if(oneSnip === null){
             const error = {
-                log: `Error in getOne middleware: ${error}`,
+                log: `Error in getOne middleware: Snippet not found!`,
                 status: 404,
                 message: {error: 'Could not find Snip!'},
             };
