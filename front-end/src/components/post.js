@@ -3,13 +3,18 @@ import React, { Component } from 'react';
 const Post = ({dispatchNav, toOverview}) => {
 
   //database accepts code as an array, so passed in value must be turned into an array
-  const splitString = string => string.split(',');
+  const splitString = string => string.split(',').map(tag => tag.trim().toLowerCase());
+
 
   function postToDatabase() {
-    const title = document.querySelector('#title').value;
-    const tags = splitString(document.querySelector('#tags').value); 
-    const code = document.querySelector('#code').value;
-    const description = document.querySelector('#description').value;
+    const titleInput = document.querySelector('#title');
+    const title = titleInput.value;
+    const tagsInput = document.querySelector('#tags'); 
+    const tags = splitString(tagsInput.value);
+    const codeInput = document.querySelector('#code');
+    const code = codeInput.value;
+    const descriptionInput = document.querySelector('#description');
+    const description = descriptionInput.value;
     const postBody = { title, tags, code, description };
     console.log(title);
 
@@ -22,6 +27,11 @@ const Post = ({dispatchNav, toOverview}) => {
     ).then(
       data => {
         console.log(data);
+        titleInput.value = '';
+        tagsInput.value = '';
+        codeInput.value = '';
+        descriptionInput.value = '';
+        alert('Snippet has been saved!')
       }
     ).catch(error => {
       console.log(error)
