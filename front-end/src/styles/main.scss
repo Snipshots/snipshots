@@ -64,6 +64,11 @@ button:hover{
   text-align: center;
 }
 
+.input-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 #overview,
 #post,
 #snippet,
