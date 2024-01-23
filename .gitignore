@@ -6,3 +6,6 @@ node_modules/
 
 #ignore dist
 /front-end/dist
+
+#ignore root dist
+/dist
