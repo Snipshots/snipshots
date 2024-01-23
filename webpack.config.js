@@ -4,10 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: {
-    bundle: path.resolve(__dirname, 'src', 'index.js'),
+    bundle: path.resolve(__dirname, 'front-end', 'src', 'index.js'),
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'front-end', 'dist'),
     filename: '[file].js', // the brackets allow it to be named anything, points to entry.bundle
     clean: true, // only compile bundle.js once
   },
@@ -15,7 +15,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Webpack App',
       filename: 'index.html', //creates mirror files, this one is 1 line
-      template: 'src/template.html',
+      template: 'front-end/src/template.html',
     }),
   ],
   devServer: {
