@@ -6,14 +6,13 @@ const snippetSlice = createSlice({
   initialState: null,
   reducers: {
     setSnippet: (state, action) => {
-        return action.payload;
-      },
+      return action.payload;
+    },
     clearSnippet: (state) => {
-        return null;
-      },
+      return null;
+    },
   },
 });
-
 
 export const { setSnippet, clearSnippet } = snippetSlice.actions;
 export const selectSnippet = (state) => state.snippet;
