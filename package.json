@@ -3,31 +3,32 @@
   "version": "1.0.0",
   "description": "Save your cooode! To do: add front-end!",
   "scripts": {
-    "test": "jest"
+    "test": "jest --verbose",
+    "build": "NODE_ENV=production webpack"
   },
   "jest": {
-    "testMatch": [
-      "snipshots/__tests__/front-end/**/**.test.js",
-      "snipshots/__tests__/back-end/**/*.test.js"
-    ]
+    "testEnvironment": "jest-environment-jsdom"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@babel/plugin-transform-async-to-generator": "^7.1.0",
+    "@babel/runtime": "^7.1.2",
+    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.2"
+  },
   "devDependencies": {
     "@babel/preset-env": "^7.23.8",
     "@babel/preset-react": "^7.23.3",
+    "@testing-library/jest-dom": "^6.2.1",
     "babel-jest": "^29.7.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^28.1.0",
     "jest-puppeteer": "^6.1.0",
     "puppeteer": "^14.2.1",
-    "supertest": "^6.2.3",
-    "react-test-renderer": "^18.2.0"
-  },
-  "dependencies": {
-    "@testing-library/jest-dom": "^6.2.0",
-    "@testing-library/react": "^14.1.2",
-    "@testing-library/user-event": "^14.5.2"
+    "react-test-renderer": "^18.2.0",
+    "supertest": "^6.2.3"
   }
 }
