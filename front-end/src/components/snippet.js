@@ -5,7 +5,7 @@ import { selectSnippet, setSnippet } from '../reducers/snippetSlice';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-const Snippet = ({toOverview}) => {
+const Snippet = ({ toOverview }) => {
   const dispatch = useDispatch();
   const snippet = useSelector(selectSnippet);
   const [selectedSnippet, setSelectedSnippet] = useState(null);
@@ -24,6 +24,7 @@ const Snippet = ({toOverview}) => {
         if (response.ok) {
           const data = await response.json();
           setSelectedSnippet(data);
+          //console.log(data); // <- CM: used to diagnose the continual refresh of snippet problem
           dispatch(setSnippet(data)); // set snippet in Redux store
         } else {
           console.error('Error fetching snippet data:', response.status);
@@ -37,7 +38,8 @@ const Snippet = ({toOverview}) => {
     if (snippet) {
       pullFullSnippet();
     }
-  }, [snippet, dispatch]);
+  }, [dispatch]);
+  //CM: removed snippet as a dependency of useeffect to ensure that the useeffect is only triggered once
 
   // until the full snippet has loaded, display a loading message
   if (!selectedSnippet) {
@@ -47,10 +49,21 @@ const Snippet = ({toOverview}) => {
   const { title, code, tags, description } = selectedSnippet;
 
   return (
-    <div id='snippet'>
-      <button onClick={toOverview} className='back'>{'←'}</button>
+    <div id="snippet">
+      <button onClick={toOverview} className="back">
+        {'←'}
+      </button>
       <h1>{title}</h1>
-      <SyntaxHighlighter language="javascript" style={vscDarkPlus} showLineNumbers lineNumberStyle={{ minWidth: '2em', padding: '0 1em', borderRight: '1px solid #ddd' }}>
+      <SyntaxHighlighter
+        language="javascript"
+        style={vscDarkPlus}
+        showLineNumbers
+        lineNumberStyle={{
+          minWidth: '2em',
+          padding: '0 1em',
+          borderRight: '1px solid #ddd',
+        }}
+      >
         {code}
       </SyntaxHighlighter>
       <p>Tags: {tags.join(', ')}</p>
