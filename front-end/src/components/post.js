@@ -1,14 +1,13 @@
-// import React, { Component } from 'react';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setPost, clearPost } from '../reducers/postSlice';
-//importing usedispatch, useselector, setpost, clearpost to implement redux
+import React, { useState } from 'react';
 
 const Post = ({ toOverview }) => {
-  const dispatch = useDispatch();
-  const postData = useSelector((state) => state.post);
-  console.log(postData);
-  //useselector passing in the post slice of state
+  //setting up state for postData
+  const [postData, setPostData] = useState({
+    title: '',
+    tags: '',
+    code: '',
+    description: '',
+  });
 
   // database accepts code as an array, so passed in value must be turned into an array.
   // also added trimming and turning tags to lowercase
@@ -18,7 +17,6 @@ const Post = ({ toOverview }) => {
   function postToDatabase() {
     console.log('post: ', postData);
     const { title, tags, code, description } = postData;
-    //console.log(postData);
     const postBody = {
       title: title,
       tags: splitString(tags),
@@ -26,8 +24,6 @@ const Post = ({ toOverview }) => {
       description: description,
     };
     console.log('post data: ', postData);
-
-    //destructuring postData and then reassigning value of tags to be the split version
 
     fetch('/', {
       method: 'POST',
@@ -37,8 +33,13 @@ const Post = ({ toOverview }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        dispatch(clearPost());
-        //using clearpost to reset post state, rather than manually resetting via vanilla DOM manip
+        //resetting state using setter function
+        setPostData({
+          title: '',
+          tags: '',
+          code: '',
+          description: '',
+        });
         alert('Snippet has been saved!');
       })
       .catch((error) => {
@@ -50,7 +51,8 @@ const Post = ({ toOverview }) => {
   const handlePostChange = (event) => {
     console.log('target: ', event.target);
     const { name, value } = event.target;
-    dispatch(setPost({ field: name, value }));
+    //using setter function to assign the state
+    setPostData({ ...postData, [name]: value });
   };
 
   return (
@@ -89,7 +91,7 @@ const Post = ({ toOverview }) => {
           value={postData.description}
           onChange={handlePostChange}
         />
-        <button id="postcode" type="submit" onClick={postToDatabase}>
+        <button id="postcode" type="submit">
           Submit snippet!
         </button>
       </form>
