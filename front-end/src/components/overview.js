@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAllSnippets } from '../reducers/overviewSlice';
 import SnippetCard from './SnippetCard';
 
 const Overview = ({ dispatchNav, setSnippetAndNavigate }) => {
-  const [allSnips, setAllSnips] = useState([]);
+  //declaring variables to utilize usedispatch from useselector from redux library, managing overviewSnippets state
+  const dispatch = useDispatch();
+  const allSnips = useSelector((state) => state.overview.overviewSnippets);
 
-  //here we're using react's stateful component. However, the rest of our code is writtn redux. Can you update it to use in redux? 
+  //using useeffect here to dipsatch the fetchallsnippets function that exists in the overviewslice file
   useEffect(() => {
-    // fetch all snippet cards (title + tags) via /all route when the component mounts
-    fetch('/all')
-      .then((response) => response.json())
-      .then((data) => setAllSnips(data.reverse()))
-      .catch((error) => console.error('Error when fetching snippets:', error));
-  }, []);
+    dispatch(fetchAllSnippets());
+  }, [dispatch]);
 
   // swap out the current component for the post component
   const createSnippet = () => {
@@ -26,7 +26,7 @@ const Overview = ({ dispatchNav, setSnippetAndNavigate }) => {
   // render all snippet cards that we grabbed previously passing in the snippet data
   // mapping all snippets onto SnippetCard copm
   return (
-    <div id='overview'>
+    <div id="overview">
       <h1>Your Snippets</h1>
       <button onClick={createSnippet}>Post new Snippet!</button>
       {allSnips.map((snip) => (

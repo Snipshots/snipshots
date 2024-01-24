@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectSnippet, setSnippet } from '../reducers/snippetSlice';
 // importing a code highlighter + style to properly display the code snippet
@@ -22,7 +22,7 @@ const Snippet = ({ toOverview }) => {
       });
       if (response.ok) {
         const data = await response.json();
-        // console.log(data); // CM: used to diagnose the continual refresh of snippet problem in useeffect
+        console.log(data); // CM: used to diagnose the continual refresh of snippet problem in useeffect
         dispatch(setSnippet(data)); // set snippet in Redux store
       } else {
         console.error('Error fetching snippet data:', response.status);
@@ -33,7 +33,7 @@ const Snippet = ({ toOverview }) => {
   };
 
   //invoke pullfullsnippet if a snippet is found in redux store
-  React.useEffect(() => {
+  useEffect(() => {
     if (snippet) {
       pullFullSnippet();
     }
