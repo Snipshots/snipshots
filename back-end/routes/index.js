@@ -1,6 +1,6 @@
 // root router for all middleware
 const express = require('express');
-const snipsController = require('../controllers/controllers');
+const snipsController = require('../controllers/snipController');
 const router = express.Router();
 
 //router to GET all snippet cards that include inputted TAGS sent on request body

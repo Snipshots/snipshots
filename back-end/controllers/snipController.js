@@ -1,4 +1,3 @@
-const { model } = require('mongoose');
 const Snippet = require('../models/snippetModel');
 
 const controller = {};
