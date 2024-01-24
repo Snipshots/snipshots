@@ -1,6 +1,7 @@
 // root router for all middleware
 const express = require('express');
 const snipsController = require('../controllers/snipController');
+const userController = require('../controllers/userController');
 const router = express.Router();
 
 //router to GET all snippet cards that include inputted TAGS sent on request body
@@ -37,6 +38,28 @@ router.patch('/title', snipsController.editTitle, (req, res) => {
 router.patch('/description', snipsController.editDescription, (req, res) => {
   return res.status(200).json(res.locals.newDescription);
 });
+
+// Sign-up
+router.post(
+  '/signup',
+  userController.signup,
+  /* Auth here */ (req, res) => {
+    return res.status(200).json(res.locals.signupResponse);
+  }
+);
+
+// Login
+router.post(
+  '/login',
+  userController.login,
+  /* Auth here */ (req, res) => {
+    return res.status(200).send('login worked');
+  }
+);
+
+// Auth
+
+// Logout
 
 // grab all posts under our user
 // title, tags
