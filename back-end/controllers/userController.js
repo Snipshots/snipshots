@@ -83,7 +83,7 @@ controller.login = (req, res, next) => {
     .catch((error) => {
       return next({
         log: `controller.login error: ${error}`,
-        message: { err: 'Error occured in Controllor login middleware.' },
+        message: { err: 'Incorrect username or password.' },
         status: 500,
       });
     });
